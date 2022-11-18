@@ -4,10 +4,7 @@ package com.example.tp2
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Filter
-import android.widget.Filterable
-import android.widget.ImageView
-import android.widget.TextView
+import android.widget.*
 import androidx.recyclerview.widget.RecyclerView
 import java.util.*
 import kotlin.collections.ArrayList
@@ -23,12 +20,14 @@ class StudentListAdapter(private val data: ArrayList<Student>) :
         val  textViewnom:TextView
         val  textViewprenom:TextView
         val imageView : ImageView
+        val checkBox : CheckBox
 
 
         init {
             textViewnom=itemView.findViewById((R.id.textViewnom))
             textViewprenom=itemView.findViewById((R.id.textViewnom))
             imageView=itemView.findViewById(R.id.imageViewFlag)
+            checkBox=itemView.findViewById(R.id.checkBox)
         }
     }
 
@@ -41,6 +40,7 @@ class StudentListAdapter(private val data: ArrayList<Student>) :
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.textViewnom.text=data[position].nom
         holder.textViewprenom.text=data[position].prenom
+        holder.checkBox.isChecked=data[position].etat
         if(data[position].genre == "man")
             holder.imageView.setImageResource(R.drawable.man)
         else
